@@ -1,10 +1,10 @@
 import React from 'react';
-import { Target, ShieldCheck, HeartHandshake, TrendingUp, MapPin, Building2, FileCheck, CheckCircle2, Truck, Award, Sparkles } from 'lucide-react';
+import { Target, ShieldCheck, HeartHandshake, TrendingUp, MapPin, Building2, FileCheck, Truck, Sparkles } from 'lucide-react';
 import { Logo } from './Logo';
 
 export const AboutSection: React.FC = () => {
   return (
-    <section id="sobre" className="py-20 md:py-28 bg-slate-900/50 border-t border-white/5 relative">
+    <section id="sobre" className="py-20 md:py-28 bg-[#090e18] border-t border-white/5 relative">
       {/* Background accents */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-72 h-72 bg-[#F58220]/5 rounded-full blur-[100px] pointer-events-none" />
 
@@ -20,20 +20,19 @@ export const AboutSection: React.FC = () => {
             Nossa <span className="text-gradient-orange">História</span> & Compromisso
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
-            Conheça o propósito e os valores sólidos que movem cada quilômetro percorrido pela Solforte Transportes.
+            Conheça o propósito e os valores sólidos que movem cada quilômetro percorrido pela SolForte Transportes.
           </p>
         </div>
 
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
           
-          {/* Left Column: Modern Corporate Identity Showcase (No flyer graphics) */}
+          {/* Left Column: Modern Corporate Identity Showcase */}
           <div className="lg:col-span-5">
             <div className="relative mx-auto max-w-md">
-              {/* Decorative Frame Glow */}
               <div className="absolute -inset-2 bg-gradient-to-tr from-[#F58220]/30 to-[#E05D00]/10 rounded-3xl blur-xl" />
               
-              <div className="relative rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 p-8 sm:p-9">
+              <div className="relative rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-gradient-to-b from-[#0c1220] via-[#070b12] to-[#070b12] p-8 sm:p-9">
                 
                 {/* Visual Header with Emblem */}
                 <div className="flex flex-col items-center text-center pb-6 border-b border-white/10">
@@ -53,7 +52,7 @@ export const AboutSection: React.FC = () => {
 
                 {/* Key Operational Highlights */}
                 <div className="py-6 space-y-3.5 border-b border-white/10 text-xs">
-                  <div className="flex items-center justify-between p-3 rounded-xl bg-slate-900/90 border border-white/5">
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5">
                     <span className="text-slate-400 flex items-center gap-2">
                       <Truck className="w-4 h-4 text-[#F58220]" />
                       Operação Rodoviária
@@ -61,7 +60,7 @@ export const AboutSection: React.FC = () => {
                     <strong className="text-white font-semibold">Carga Lotação & Fracionada</strong>
                   </div>
 
-                  <div className="flex items-center justify-between p-3 rounded-xl bg-slate-900/90 border border-white/5">
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5">
                     <span className="text-slate-400 flex items-center gap-2">
                       <MapPin className="w-4 h-4 text-[#F58220]" />
                       Entroncamento
@@ -69,12 +68,12 @@ export const AboutSection: React.FC = () => {
                     <strong className="text-white font-semibold">BR-116 e BR-330</strong>
                   </div>
 
-                  <div className="flex items-center justify-between p-3 rounded-xl bg-slate-900/90 border border-white/5">
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5">
                     <span className="text-slate-400 flex items-center gap-2">
-                      <ShieldCheck className="w-4 h-4 text-green-400" />
+                      <ShieldCheck className="w-4 h-4 text-emerald-400" />
                       Apólice de Carga
                     </span>
-                    <strong className="text-green-400 font-semibold">RCTR-C e RCF-DC Ativos</strong>
+                    <strong className="text-emerald-400 font-semibold">RCTR-C e RCF-DC Ativos</strong>
                   </div>
                 </div>
 
@@ -106,13 +105,13 @@ export const AboutSection: React.FC = () => {
           <div className="lg:col-span-7 flex flex-col justify-center">
             
             {/* The Authentic History Quote Box */}
-            <div className="relative p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-950 border border-[#F58220]/30 shadow-xl mb-8">
+            <div className="relative p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#0c1220] via-[#0c1220]/90 to-[#070b12] border border-[#F58220]/30 shadow-xl mb-8">
               <span className="text-5xl font-serif text-[#F58220]/30 absolute top-3 left-4 select-none">“</span>
               <p className="text-lg sm:text-xl text-slate-200 font-medium italic relative z-10 leading-relaxed pt-2 pl-4">
-                A Solforte Transportes surgiu devido à necessidade do mercado em uma transportadora que seja <span className="text-[#FF9D43] font-bold not-italic">ágil e eficaz</span>, para atender as necessidades dos nossos clientes de forma <span className="text-[#FF9D43] font-bold not-italic">segura, com honestidade e seriedade</span>, visando alinhar custos e benefícios para nossos parceiros em cada entrega.
+                A SolForte Transportes surgiu devido à necessidade do mercado em uma transportadora que seja <span className="text-[#FF9D43] font-bold not-italic">ágil e eficaz</span>, para atender as necessidades dos nossos clientes de forma <span className="text-[#FF9D43] font-bold not-italic">segura, com honestidade e seriedade</span>, visando alinhar custos e benefícios para nossos parceiros em cada entrega.
               </p>
               <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
-                <span className="font-semibold text-slate-300">Diretoria Executiva • Solforte Transportes</span>
+                <span className="font-semibold text-slate-300">Diretoria Executiva • SolForte Transportes</span>
                 <span className="font-mono text-[#F58220]">Jequié • Bahia</span>
               </div>
             </div>
@@ -124,7 +123,7 @@ export const AboutSection: React.FC = () => {
                 Localização Estratégica no Coração Rodoviário da Bahia
               </h3>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                Situada estrategicamente em <strong>Jequié</strong>, a “Cidade Sol”, a Solforte está no entroncamento viário mais importante que conecta o Norte e Nordeste às regiões Sudeste e Sul do Brasil (através das rodovias federais <strong>BR-116</strong> e <strong>BR-330</strong>). Isso nos permite oferecer tempos de trânsito otimizados, menor quilometragem ociosa e saídas diárias ágeis.
+                Situada estrategicamente em <strong>Jequié</strong>, a “Cidade Sol”, a SolForte está no entroncamento viário mais importante que conecta o Norte e Nordeste às regiões Sudeste e Sul do Brasil (através das rodovias federais <strong>BR-116</strong> e <strong>BR-330</strong>). Isso nos permite oferecer tempos de trânsito otimizados, menor quilometragem ociosa e saídas diárias ágeis.
               </p>
             </div>
 
@@ -143,9 +142,9 @@ export const AboutSection: React.FC = () => {
               </div>
 
               <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-center col-span-2 sm:col-span-1">
-                <ShieldCheck className="w-5 h-5 text-green-400 mx-auto mb-1.5" />
+                <ShieldCheck className="w-5 h-5 text-emerald-400 mx-auto mb-1.5" />
                 <p className="text-[11px] text-slate-400 uppercase font-semibold">Situação Cadastral</p>
-                <p className="text-xs font-bold text-green-400">Regular & Ativa</p>
+                <p className="text-xs font-bold text-emerald-400">Regular & Ativa</p>
               </div>
             </div>
 
@@ -156,7 +155,7 @@ export const AboutSection: React.FC = () => {
         {/* 4 Pillars of Excellence */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           
-          <div className="p-6 rounded-2xl bg-slate-950/80 border border-white/10 hover:border-[#F58220]/50 transition-all duration-300 group hover:-translate-y-1">
+          <div className="p-6 rounded-2xl bg-[#0c1220] border border-white/10 hover:border-[#F58220]/50 transition-all duration-300 group hover:-translate-y-1">
             <div className="w-12 h-12 rounded-xl bg-[#F58220]/15 text-[#F58220] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
               <Target className="w-6 h-6" />
             </div>
@@ -166,7 +165,7 @@ export const AboutSection: React.FC = () => {
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-slate-950/80 border border-white/10 hover:border-[#F58220]/50 transition-all duration-300 group hover:-translate-y-1">
+          <div className="p-6 rounded-2xl bg-[#0c1220] border border-white/10 hover:border-[#F58220]/50 transition-all duration-300 group hover:-translate-y-1">
             <div className="w-12 h-12 rounded-xl bg-[#F58220]/15 text-[#F58220] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
               <HeartHandshake className="w-6 h-6" />
             </div>
@@ -176,7 +175,7 @@ export const AboutSection: React.FC = () => {
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-slate-950/80 border border-white/10 hover:border-[#F58220]/50 transition-all duration-300 group hover:-translate-y-1">
+          <div className="p-6 rounded-2xl bg-[#0c1220] border border-white/10 hover:border-[#F58220]/50 transition-all duration-300 group hover:-translate-y-1">
             <div className="w-12 h-12 rounded-xl bg-[#F58220]/15 text-[#F58220] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
               <ShieldCheck className="w-6 h-6" />
             </div>
@@ -186,7 +185,7 @@ export const AboutSection: React.FC = () => {
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-slate-950/80 border border-white/10 hover:border-[#F58220]/50 transition-all duration-300 group hover:-translate-y-1">
+          <div className="p-6 rounded-2xl bg-[#0c1220] border border-white/10 hover:border-[#F58220]/50 transition-all duration-300 group hover:-translate-y-1">
             <div className="w-12 h-12 rounded-xl bg-[#F58220]/15 text-[#F58220] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
               <TrendingUp className="w-6 h-6" />
             </div>

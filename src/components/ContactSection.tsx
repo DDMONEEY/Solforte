@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Instagram, Clock, Send, CheckCircle2, Building, ShieldCheck, Copy, Check, MessageSquare } from 'lucide-react';
+import { Phone, Mail, MapPin, Instagram, Clock, Send, CheckCircle2, ShieldCheck, Copy, Check, MessageSquare } from 'lucide-react';
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({

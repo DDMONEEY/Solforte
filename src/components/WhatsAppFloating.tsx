@@ -1,31 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { MessageCircle, X } from 'lucide-react';
+import { trackConversionEvent } from '../utils/analytics';
 
 export const WhatsAppFloating: React.FC = () => {
   const [showTooltip, setShowTooltip] = useState(true);
 
   useEffect(() => {
-    // Hide tooltip automatically after 8 seconds
+    // Hide tooltip automatically after 7 seconds
     const timer = setTimeout(() => {
       setShowTooltip(false);
-    }, 8000);
+    }, 7000);
     return () => clearTimeout(timer);
   }, []);
 
   const message = encodeURIComponent(
-    'Olá! Gostaria de falar com o atendimento da Solforte Transportes.'
+    'Olá, gostaria de solicitar uma cotação de transporte com a SolForte.'
   );
 
+  const handleClick = () => {
+    trackConversionEvent('click_whatsapp', { source: 'floating_widget' });
+  };
+
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-end gap-3 select-none">
+    <div className="fixed bottom-6 right-6 z-40 flex items-end gap-3 select-none">
       {/* Tooltip bubble */}
       {showTooltip && (
-        <div className="hidden sm:flex items-center gap-2 bg-slate-900/95 border border-white/15 text-white text-xs py-2 px-3.5 rounded-2xl shadow-2xl backdrop-blur-md animate-in fade-in slide-in-from-right-2">
-          <span>Olá! Precisa de cotação de frete?</span>
+        <div className="hidden sm:flex items-center gap-2 bg-[#0c1220] border border-white/15 text-white text-xs py-2 px-3.5 rounded-2xl shadow-2xl backdrop-blur-md animate-in fade-in slide-in-from-right-2">
+          <span>Olá! Precisa de cotação para sua carga?</span>
           <button
             onClick={() => setShowTooltip(false)}
             className="text-slate-400 hover:text-white p-0.5 rounded-full"
-            aria-label="Fechar mensagem"
+            aria-label="Fechar mensagem de atendimento"
           >
             <X className="w-3.5 h-3.5" />
           </button>
@@ -37,14 +42,12 @@ export const WhatsAppFloating: React.FC = () => {
         href={`https://wa.me/557330476129?text=${message}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="relative group w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white flex items-center justify-center shadow-2xl shadow-green-500/30 hover:scale-110 transition-transform duration-300"
-        aria-label="Abrir conversa no WhatsApp"
+        onClick={handleClick}
+        className="relative group w-13 h-13 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white flex items-center justify-center shadow-xl shadow-green-500/25 hover:scale-105 transition-transform duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
+        aria-label="Falar com a SolForte no WhatsApp"
       >
-        {/* Glow pulse ring */}
-        <span className="absolute -inset-1 rounded-full bg-[#25D366] opacity-75 animate-ping -z-10" />
-        <MessageCircle className="w-7 h-7 fill-white" />
+        <MessageCircle className="w-6 h-6 fill-white" />
       </a>
     </div>
   );
 };
-

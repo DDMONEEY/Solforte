@@ -4,28 +4,92 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solforte Transportes | Soluções em Transporte Rodoviário de Cargas</title>
     
-    <!-- Meta SEO -->
-    <meta name="description" content="A Solforte Transportes oferece transporte rodoviário de cargas seguro, ágil e eficiente em todo o Brasil. Atendimento direto de Jequié/BA. Solicite sua cotação!" />
-    <meta name="keywords" content="Solforte Transportes, transportadora Jequié, frete Bahia, transporte rodoviário de cargas, carga fracionada, frete dedicado, logística Brasil" />
-    <meta name="author" content="Solforte Transportes de Cargas Ltda." />
-    
-    <!-- Open Graph -->
+    <!-- Title & SEO (Requirement 22) -->
+    <title>SolForte Transportes | Transporte Rodoviário de Cargas</title>
+    <meta name="description" content="Transporte rodoviário de cargas com segurança, tecnologia e previsibilidade. Carga lotação e fracionada partindo de Jequié/BA para a Bahia e todo o Brasil. Solicite sua cotação B2B!" />
+    <meta name="keywords" content="SolForte Transportes, transportadora Jequié, frete Bahia, transporte rodoviário de cargas, carga fracionada, frete dedicado, carga lotação, BR-116 frete, logística Bahia" />
+    <meta name="author" content="SolForte Transportes de Cargas Ltda." />
+    <link rel="canonical" href="https://solforte.vercel.app/" />
+
+    <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Solforte Transportes | Agilidade e Segurança em Cada Entrega" />
-    <meta property="og:description" content="Especialistas em transporte rodoviário de cargas com segurança, pontualidade e o melhor custo-benefício. Fale com a Solforte!" />
-    <meta property="og:image" content="/images/logo-solforte.jpg" />
+    <meta property="og:url" content="https://solforte.vercel.app/" />
+    <meta property="og:title" content="SolForte Transportes | Transporte Rodoviário de Cargas" />
+    <meta property="og:description" content="Transporte de cargas com segurança, tecnologia e previsibilidade. Frota monitorada e apólices de seguro ativas. Atendimento centralizado em Jequié / BA." />
+    <meta property="og:image" content="https://solforte.vercel.app/images/logo-solforte.jpg" />
     <meta property="og:locale" content="pt_BR" />
-    
+    <meta property="og:site_name" content="SolForte Transportes" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SolForte Transportes | Transporte Rodoviário de Cargas" />
+    <meta name="twitter:description" content="Transporte rodoviário de cargas com segurança, tecnologia e previsibilidade. Solicite sua cotação!" />
+    <meta name="twitter:image" content="https://solforte.vercel.app/images/logo-solforte.jpg" />
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Structured Data (JSON-LD) for LocalBusiness & LogisticsService (Requirement 22 & 25) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LogisticsService",
+      "name": "SolForte Transportes",
+      "legalName": "SolForte Transportes de Cargas Ltda.",
+      "taxID": "53.119.407/0001-07",
+      "url": "https://solforte.vercel.app/",
+      "logo": "https://solforte.vercel.app/images/logo-solforte.jpg",
+      "image": "https://solforte.vercel.app/images/logo-solforte.jpg",
+      "telephone": "+55-73-3047-6129",
+      "email": "comercial@solfortetransportes.com.br",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Avenida Lions Club, 54",
+        "addressLocality": "Jequié",
+        "addressRegion": "BA",
+        "postalCode": "45208-441",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -13.8647,
+        "longitude": -40.0825
+      },
+      "areaServed": [
+        {
+          "@type": "State",
+          "name": "Bahia"
+        },
+        {
+          "@type": "Country",
+          "name": "Brasil"
+        }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday"],
+          "opens": "08:00",
+          "closes": "12:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/solfortetransportes"
+      ]
+    }
+    </script>
   </head>
-  <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-amber-500 selection:text-black min-h-screen">
+  <body class="bg-[#070b12] text-slate-100 font-sans antialiased selection:bg-[#F58220] selection:text-black min-h-screen">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-
