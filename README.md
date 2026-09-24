@@ -74,3 +74,4 @@ pnpm run build
 ## 🌐 Deploy em 1 Clique
 
 O projeto inclui o arquivo `vercel.json` pré-configurado para implantação automática na **Vercel**, **Netlify** ou **Cloudflare Pages**.
+

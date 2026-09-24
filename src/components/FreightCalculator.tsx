@@ -340,3 +340,4 @@ export const FreightCalculator: React.FC = () => {
     </section>
   );
 };
+
