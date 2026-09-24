@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { MapPin, Navigation, ArrowUpRight, Compass, Shield, Truck } from 'lucide-react';
+import { MapPin, Navigation, Compass, Shield, Truck, ArrowRight, CheckCircle2, Clock } from 'lucide-react';
 
 interface RouteInfo {
   id: string;
+  region: 'bahia' | 'sudeste' | 'centro';
   from: string;
   to: string;
   highway: string;
@@ -17,42 +18,57 @@ export const CoverageMap: React.FC = () => {
   const routes: RouteInfo[] = [
     {
       id: '1',
+      region: 'bahia',
       from: 'Jequié / Região BA',
-      to: 'Salvador & Recôncavo',
+      to: 'Salvador & Recôncavo Baiano',
       highway: 'BR-116 / BR-324',
       type: 'Lotação & Fracionado',
       transitTime: '24 horas',
-      frequency: 'Diária',
+      frequency: 'Saídas Diárias',
     },
     {
       id: '2',
+      region: 'bahia',
       from: 'Jequié / BA',
-      to: 'Vitória da Conquista & Sul da BA',
+      to: 'Vitória da Conquista & Sul da Bahia',
       highway: 'BR-116',
       type: 'Lotação & Fracionado',
       transitTime: '12 a 24 horas',
-      frequency: 'Diária',
+      frequency: 'Saídas Diárias',
     },
     {
       id: '3',
+      region: 'bahia',
+      from: 'Jequié / BA',
+      to: 'Feira de Santana & Grande Salvador',
+      highway: 'BR-116',
+      type: 'Lotação Direta',
+      transitTime: '24 horas',
+      frequency: 'Saídas Diárias',
+    },
+    {
+      id: '4',
+      region: 'sudeste',
       from: 'Bahia (Jequié/SSA)',
       to: 'São Paulo (Capital & Interior)',
       highway: 'BR-116 / Fernão Dias',
-      type: 'Lotação Direta',
+      type: 'Lotação Exclusiva',
       transitTime: '48 a 72 horas',
       frequency: 'Saídas Regulares',
     },
     {
-      id: '4',
+      id: '5',
+      region: 'sudeste',
       from: 'Bahia',
-      to: 'Belo Horizonte & Minas Gerais',
+      to: 'Belo Horizonte & Região Metropolitana MG',
       highway: 'BR-116 / BR-381',
       type: 'Lotação & Dedicado',
       transitTime: '36 a 48 horas',
       frequency: 'Saídas Regulares',
     },
     {
-      id: '5',
+      id: '6',
+      region: 'sudeste',
       from: 'Bahia',
       to: 'Espírito Santo (Vitória/Linhares)',
       highway: 'BR-101 / BR-116',
@@ -61,15 +77,30 @@ export const CoverageMap: React.FC = () => {
       frequency: 'Semanal',
     },
     {
-      id: '6',
+      id: '7',
+      region: 'centro',
       from: 'Bahia',
-      to: 'Goiás & Distrito Federal',
+      to: 'Goiás & Distrito Federal (Brasília)',
       highway: 'BR-020 / BR-242',
       type: 'Lotação Fechada',
       transitTime: '48 a 72 horas',
       frequency: 'Sob Demanda',
     },
+    {
+      id: '8',
+      region: 'centro',
+      from: 'Bahia',
+      to: 'Tocantins & Corredor Centro-Norte',
+      highway: 'BR-153 / BR-242',
+      type: 'Lotação Especial',
+      transitTime: '60 a 72 horas',
+      frequency: 'Programada',
+    },
   ];
+
+  const filteredRoutes = selectedRegion === 'all'
+    ? routes
+    : routes.filter((r) => r.region === selectedRegion);
 
   return (
     <section id="cobertura" className="py-20 md:py-28 bg-slate-900/40 border-t border-white/5 relative">
@@ -85,7 +116,7 @@ export const CoverageMap: React.FC = () => {
             Conectando a Bahia aos <span className="text-gradient-orange">Maiores Polos</span> do País
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
-            Com matriz localizada no coração geográfico e rodoviário da Bahia, a Solforte oferece rotas ágeis e seguras com saídas estruturadas.
+            Com matriz localizada no coração geográfico e viário da Bahia, a Solforte oferece rotas ágeis e seguras com saídas estruturadas.
           </p>
         </div>
 
@@ -145,16 +176,63 @@ export const CoverageMap: React.FC = () => {
           </div>
         </div>
 
+        {/* Region Filter Buttons */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+          <button
+            onClick={() => setSelectedRegion('all')}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+              selectedRegion === 'all'
+                ? 'bg-[#F58220] text-white shadow-lg shadow-orange-500/25'
+                : 'bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 border border-white/10'
+            }`}
+          >
+            Todas as Rotas Principais
+          </button>
+          <button
+            onClick={() => setSelectedRegion('bahia')}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+              selectedRegion === 'bahia'
+                ? 'bg-[#F58220] text-white shadow-lg shadow-orange-500/25'
+                : 'bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 border border-white/10'
+            }`}
+          >
+            Bahia & Nordeste
+          </button>
+          <button
+            onClick={() => setSelectedRegion('sudeste')}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+              selectedRegion === 'sudeste'
+                ? 'bg-[#F58220] text-white shadow-lg shadow-orange-500/25'
+                : 'bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 border border-white/10'
+            }`}
+          >
+            Sudeste (SP / MG / ES)
+          </button>
+          <button
+            onClick={() => setSelectedRegion('centro')}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+              selectedRegion === 'centro'
+                ? 'bg-[#F58220] text-white shadow-lg shadow-orange-500/25'
+                : 'bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 border border-white/10'
+            }`}
+          >
+            Centro-Oeste & Outros
+          </button>
+        </div>
+
         {/* Route Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {routes.map((route) => (
+          {filteredRoutes.map((route) => (
             <div
               key={route.id}
-              className="p-6 rounded-2xl bg-slate-950/80 border border-white/10 hover:border-[#F58220]/40 transition-all duration-300 group"
+              className="p-6 rounded-2xl bg-slate-950/80 border border-white/10 hover:border-[#F58220]/40 transition-all duration-300 group hover:-translate-y-0.5 shadow-lg"
             >
               <div className="flex items-center justify-between text-xs text-slate-400 mb-4 pb-3 border-b border-white/5">
                 <span className="font-mono text-[#F58220] font-semibold">{route.highway}</span>
-                <span className="px-2 py-0.5 rounded bg-white/5 text-slate-300">{route.frequency}</span>
+                <span className="px-2 py-0.5 rounded bg-white/5 text-slate-300 flex items-center gap-1">
+                  <Clock className="w-3 h-3 text-[#F58220]" />
+                  {route.frequency}
+                </span>
               </div>
 
               <div className="space-y-2 mb-4">
@@ -185,8 +263,18 @@ export const CoverageMap: React.FC = () => {
           ))}
         </div>
 
+        {/* CTA to quote route */}
+        <div className="mt-10 text-center">
+          <a
+            href="#simulador"
+            className="inline-flex items-center gap-2 text-sm font-bold text-[#F58220] hover:text-[#ff9e47] transition-colors"
+          >
+            <span>Precisa de uma rota personalizada para seu negócio? Simule seu frete agora</span>
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+
       </div>
     </section>
   );
 };
-

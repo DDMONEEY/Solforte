@@ -6,7 +6,6 @@ import { ServicesSection } from './components/ServicesSection';
 import { FreightCalculator } from './components/FreightCalculator';
 import { CoverageMap } from './components/CoverageMap';
 import { WhyChooseUs } from './components/WhyChooseUs';
-import { TrackingSection } from './components/TrackingSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { WhatsAppFloating } from './components/WhatsAppFloating';
@@ -25,7 +24,6 @@ export const App: React.FC = () => {
         <FreightCalculator />
         <CoverageMap />
         <WhyChooseUs />
-        <TrackingSection />
         <ContactSection />
       </main>
 

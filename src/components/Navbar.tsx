@@ -26,8 +26,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
     { label: 'Início', href: '#inicio' },
     { label: 'Sobre Nós', href: '#sobre' },
     { label: 'Serviços', href: '#servicos' },
-    { label: 'Diferenciais', href: '#diferenciais' },
     { label: 'Simulador', href: '#simulador' },
+    { label: 'Rotas', href: '#cobertura' },
+    { label: 'Diferenciais', href: '#diferenciais' },
     { label: 'Contato', href: '#contato' },
   ];
 

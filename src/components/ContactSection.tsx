@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Instagram, MessageCircle, Clock, Send, CheckCircle2, Building, ShieldCheck } from 'lucide-react';
+import { Phone, Mail, MapPin, Instagram, Clock, Send, CheckCircle2, Building, ShieldCheck, Copy, Check, MessageSquare } from 'lucide-react';
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
-    subject: '',
+    subject: 'Cotação de Frete',
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,13 +18,19 @@ export const ContactSection: React.FC = () => {
       `*MENSAGEM VIA SITE - SOLFORTE TRANSPORTES*\n\n` +
       `👤 *Nome:* ${formData.name}\n` +
       `📱 *Telefone:* ${formData.phone}\n` +
-      `✉️ *E-mail:* ${formData.email}\n` +
-      `📌 *Assunto:* ${formData.subject || 'Contato Geral'}\n` +
+      `✉️ *E-mail:* ${formData.email || 'Não informado'}\n` +
+      `📌 *Assunto:* ${formData.subject}\n` +
       `💬 *Mensagem:* ${formData.message}`
     );
 
     window.open(`https://wa.me/557330476129?text=${whatsappText}`, '_blank');
     setSubmitted(true);
+  };
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText('comercial@solfortetransportes.com.br');
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2500);
   };
 
   return (
@@ -33,113 +40,178 @@ export const ContactSection: React.FC = () => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F58220]/10 border border-[#F58220]/25 text-[#FF9D43] text-xs font-semibold uppercase tracking-wider mb-4">
-            <span>Fale com a Gente</span>
+            <MessageSquare className="w-3.5 h-3.5 text-[#F58220]" />
+            <span>Fale com a Solforte</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-            Canais de <span className="text-gradient-orange">Atendimento</span>
+            Canais Oficiais de <span className="text-gradient-orange">Atendimento</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
-            Estamos prontos para atender sua solicitação de frete com agilidade e atendimento humanizado.
+            Nossa equipe comercial em Jequié / BA está à disposição para dimensionar e cotar sua operação com rapidez e transparência.
           </p>
         </div>
 
-        {/* Contact Grid: Info Cards + Official Visual + Form */}
+        {/* Contact Grid: Modern Corporate Hub (Left) + Contact Form (Right) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
           
-          {/* Left Column: Official Contact Card & Details */}
+          {/* Left Column: Premium Corporate Hub Card */}
           <div className="lg:col-span-5 space-y-6">
             
-            {/* Official Card Image Preview */}
-            <div className="relative rounded-2xl overflow-hidden border border-white/15 shadow-2xl bg-slate-950 group">
-              <img
-                src="/images/card-contato.jpg"
-                alt="Contato Oficial Solforte Transportes"
-                className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex items-end p-6">
-                <div>
-                  <p className="text-xs text-slate-300 uppercase tracking-widest font-bold">Atendimento Oficial</p>
-                  <p className="text-xl font-extrabold text-white">Solforte Transportes de Cargas</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Direct Contact Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Live Operational Status Card */}
+            <div className="rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-950 border border-white/15 p-6 sm:p-7 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-[#F58220]/10 rounded-full blur-3xl pointer-events-none" />
               
-              {/* Phone / WhatsApp */}
-              <a
-                href="https://wa.me/557330476129"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-5 rounded-2xl bg-slate-900/90 border border-white/10 hover:border-[#F58220]/50 transition-all group block hover:-translate-y-0.5"
-              >
-                <div className="w-10 h-10 rounded-xl bg-green-500/10 text-green-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                  <Phone className="w-5 h-5 text-[#25D366]" />
+              {/* Header with live pulse */}
+              <div className="flex items-center justify-between pb-5 border-b border-white/10 mb-6">
+                <div className="flex items-center gap-2.5">
+                  <span className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500" />
+                  </span>
+                  <span className="text-xs font-bold text-green-400 uppercase tracking-wider">
+                    Central Operacional Ativa
+                  </span>
                 </div>
-                <p className="text-xs text-slate-400 font-semibold uppercase">Telefone & WhatsApp</p>
-                <p className="text-base font-bold text-white mt-1">(73) 3047-6129</p>
-                <span className="text-[11px] text-green-400 mt-1 inline-block">Atendimento imediato</span>
-              </a>
+                <span className="text-[11px] text-slate-400 bg-white/5 px-2.5 py-1 rounded-full border border-white/10">
+                  Tempo médio: &lt; 5 min
+                </span>
+              </div>
 
-              {/* Email */}
-              <a
-                href="mailto:comercial@solfortetransportes.com.br"
-                className="p-5 rounded-2xl bg-slate-900/90 border border-white/10 hover:border-[#F58220]/50 transition-all group block hover:-translate-y-0.5"
-              >
-                <div className="w-10 h-10 rounded-xl bg-[#F58220]/10 text-[#F58220] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <p className="text-xs text-slate-400 font-semibold uppercase">E-mail Comercial</p>
-                <p className="text-xs font-bold text-white mt-1 break-all">
-                  comercial@solfortetransportes.com.br
-                </p>
-                <span className="text-[11px] text-slate-400 mt-1 inline-block">Cotações formais</span>
-              </a>
+              <h3 className="text-xl font-bold text-white mb-2">
+                Atendimento Rápido e Humanizado
+              </h3>
+              <p className="text-sm text-slate-300 leading-relaxed mb-6">
+                Converse diretamente com nossos especialistas em logística rodoviária para cotações personalizadas, dúvidas técnicas ou parcerias comerciais.
+              </p>
 
-              {/* Instagram */}
-              <a
-                href="https://www.instagram.com/solfortetransportes?stkn=anhldG1qZTVvdDQ3"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-5 rounded-2xl bg-slate-900/90 border border-white/10 hover:border-[#F58220]/50 transition-all group block hover:-translate-y-0.5"
-              >
-                <div className="w-10 h-10 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                  <Instagram className="w-5 h-5" />
-                </div>
-                <p className="text-xs text-slate-400 font-semibold uppercase">Instagram Oficial</p>
-                <p className="text-sm font-bold text-white mt-1">@solfortetransportes</p>
-                <span className="text-[11px] text-pink-400 mt-1 inline-block">Acompanhe novidades</span>
-              </a>
+              {/* Direct Quick Action Buttons */}
+              <div className="space-y-3">
+                
+                {/* WhatsApp */}
+                <a
+                  href="https://wa.me/557330476129?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20o%20comercial%20da%20Solforte%20Transportes."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-4 rounded-2xl bg-[#25D366]/15 hover:bg-[#25D366]/25 border border-[#25D366]/40 transition-all group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-[#25D366] text-white flex items-center justify-center shadow-md">
+                      <Phone className="w-5 h-5 fill-white" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-green-400 font-semibold uppercase">WhatsApp Comercial</p>
+                      <p className="text-base font-bold text-white">(73) 3047-6129</p>
+                    </div>
+                  </div>
+                  <span className="text-xs font-bold text-[#25D366] group-hover:translate-x-1 transition-transform">
+                    Chamar ➔
+                  </span>
+                </a>
 
-              {/* Horário */}
-              <div className="p-5 rounded-2xl bg-slate-900/90 border border-white/10">
-                <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-3">
-                  <Clock className="w-5 h-5" />
+                {/* Direct Phone Call */}
+                <a
+                  href="tel:7330476129"
+                  className="flex items-center justify-between p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-[#F58220]/15 text-[#F58220] flex items-center justify-center">
+                      <Phone className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-slate-400 font-semibold uppercase">Ligação Telefônica</p>
+                      <p className="text-sm font-bold text-white">(73) 3047-6129</p>
+                    </div>
+                  </div>
+                  <span className="text-xs text-slate-400 group-hover:text-white transition-colors">
+                    Ligar agora ↗
+                  </span>
+                </a>
+
+                {/* Email with copy button */}
+                <div className="flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10">
+                  <div className="flex items-center gap-3 min-w-0 pr-2">
+                    <div className="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-400 flex items-center justify-center flex-shrink-0">
+                      <Mail className="w-5 h-5" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-xs text-slate-400 font-semibold uppercase">E-mail Comercial</p>
+                      <p className="text-xs font-bold text-white truncate">
+                        comercial@solfortetransportes.com.br
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={copyEmail}
+                    className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-colors flex items-center gap-1 text-xs"
+                    title="Copiar e-mail"
+                  >
+                    {copiedEmail ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}
+                  </button>
                 </div>
-                <p className="text-xs text-slate-400 font-semibold uppercase">Horário Operacional</p>
-                <p className="text-xs font-bold text-white mt-1">Seg - Sex: 08h às 18h</p>
-                <span className="text-[11px] text-slate-400 mt-1 inline-block">Sábado: 08h às 12h</span>
+
+                {/* Instagram */}
+                <a
+                  href="https://www.instagram.com/solfortetransportes?stkn=anhldG1qZTVvdDQ3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-pink-500/15 text-pink-400 flex items-center justify-center">
+                      <Instagram className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-slate-400 font-semibold uppercase">Instagram Oficial</p>
+                      <p className="text-sm font-bold text-white">@solfortetransportes</p>
+                    </div>
+                  </div>
+                  <span className="text-xs text-slate-400 group-hover:text-pink-400 transition-colors">
+                    Seguir ↗
+                  </span>
+                </a>
+
               </div>
 
             </div>
 
-            {/* Sede Address Box */}
-            <div className="p-6 rounded-2xl bg-slate-900/90 border border-white/10 flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-[#F58220]/15 text-[#F58220] flex items-center justify-center flex-shrink-0">
-                <MapPin className="w-6 h-6" />
-              </div>
-              <div>
-                <p className="text-xs font-bold text-[#F58220] uppercase tracking-wider">Matriz em Jequié / BA</p>
-                <p className="text-sm font-bold text-white mt-1">
-                  Avenida Lions Club, 54 - Jequiezinho
-                </p>
-                <p className="text-xs text-slate-400 mt-0.5">
-                  Jequié - BA • CEP: 45208-441
-                </p>
-                <p className="text-xs text-slate-500 font-mono mt-2">
-                  CNPJ: 53.119.407/0001-07 • RNTRC ANTT: 056478766
-                </p>
+            {/* Sede Matriz Details Box */}
+            <div className="p-6 rounded-3xl bg-slate-900/80 border border-white/10">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-[#F58220]/15 text-[#F58220] flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-6 h-6" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-[#F58220] uppercase tracking-wider">
+                      Matriz Operacional
+                    </span>
+                    <span className="text-[11px] text-green-400 font-medium flex items-center gap-1">
+                      <CheckCircle2 className="w-3 h-3" /> Base Própria
+                    </span>
+                  </div>
+                  <p className="text-sm font-bold text-white mt-1">
+                    Avenida Lions Club, 54 - Jequiezinho
+                  </p>
+                  <p className="text-xs text-slate-300 mt-0.5">
+                    Jequié - Bahia • CEP: 45208-441
+                  </p>
+
+                  <div className="mt-3 pt-3 border-t border-white/10 grid grid-cols-2 gap-2 text-[11px] text-slate-400">
+                    <div>
+                      <span className="block text-slate-500">CNPJ Matriz:</span>
+                      <strong className="text-slate-300 font-mono">53.119.407/0001-07</strong>
+                    </div>
+                    <div>
+                      <span className="block text-slate-500">RNTRC ANTT:</span>
+                      <strong className="text-slate-300 font-mono">056478766</strong>
+                    </div>
+                  </div>
+
+                  <div className="mt-3 flex items-center gap-2 text-xs text-slate-400">
+                    <Clock className="w-3.5 h-3.5 text-[#F58220]" />
+                    <span>Segunda a Sexta: 08h às 18h | Sábado: 08h às 12h</span>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -150,18 +222,21 @@ export const ContactSection: React.FC = () => {
             <div className="rounded-3xl bg-slate-900/95 border border-white/15 p-8 sm:p-10 shadow-2xl backdrop-blur-xl">
               
               <div className="mb-8">
-                <h3 className="text-2xl font-bold text-white">Envie uma Mensagem</h3>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300 text-xs font-semibold mb-3">
+                  <span>Mensagem Direta</span>
+                </div>
+                <h3 className="text-2xl font-bold text-white">Envie uma Solicitação</h3>
                 <p className="text-sm text-slate-300 mt-1">
-                  Preencha os campos abaixo e nosso consultor entrará em contato imediatamente.
+                  Preencha o formulário e nossa equipe responderá com proposta formal e atendimento prioritário.
                 </p>
               </div>
 
               {submitted ? (
                 <div className="p-8 rounded-2xl bg-green-500/10 border border-green-500/30 text-center animate-in fade-in">
                   <CheckCircle2 className="w-12 h-12 text-green-400 mx-auto mb-3" />
-                  <h4 className="text-lg font-bold text-white">Mensagem Encaminhada!</h4>
-                  <p className="text-sm text-slate-300 mt-2">
-                    Abrimos o WhatsApp com sua mensagem formatada. Caso queira enviar outra mensagem, clique no botão abaixo.
+                  <h4 className="text-lg font-bold text-white">Mensagem Encaminhada com Sucesso!</h4>
+                  <p className="text-sm text-slate-300 mt-2 max-w-md mx-auto">
+                    Formatamos seus dados e abrimos a conversa com nosso time comercial no WhatsApp. Retornaremos rapidamente.
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
@@ -175,7 +250,7 @@ export const ContactSection: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
-                        Seu Nome ou Empresa *
+                        Seu Nome ou Razão Social *
                       </label>
                       <input
                         type="text"
@@ -183,7 +258,7 @@ export const ContactSection: React.FC = () => {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="Ex: Carlos Silva ou Distribuidora ABC"
-                        className="w-full bg-slate-950 border border-white/15 focus:border-[#F58220] rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#F58220]/20"
+                        className="w-full bg-slate-950 border border-white/15 focus:border-[#F58220] rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#F58220]/20 transition-colors"
                       />
                     </div>
 
@@ -197,7 +272,7 @@ export const ContactSection: React.FC = () => {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="(73) 99999-9999"
-                        className="w-full bg-slate-950 border border-white/15 focus:border-[#F58220] rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#F58220]/20"
+                        className="w-full bg-slate-950 border border-white/15 focus:border-[#F58220] rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#F58220]/20 transition-colors"
                       />
                     </div>
                   </div>
@@ -205,42 +280,46 @@ export const ContactSection: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
-                        E-mail
+                        E-mail de Contato
                       </label>
                       <input
                         type="email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="seuemail@empresa.com.br"
-                        className="w-full bg-slate-950 border border-white/15 focus:border-[#F58220] rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#F58220]/20"
+                        className="w-full bg-slate-950 border border-white/15 focus:border-[#F58220] rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#F58220]/20 transition-colors"
                       />
                     </div>
 
                     <div>
                       <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
-                        Assunto
+                        Assunto do Contato
                       </label>
-                      <input
-                        type="text"
+                      <select
                         value={formData.subject}
                         onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                        placeholder="Cotação, Dúvidas, Parceria..."
-                        className="w-full bg-slate-950 border border-white/15 focus:border-[#F58220] rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#F58220]/20"
-                      />
+                        className="w-full bg-slate-950 border border-white/15 focus:border-[#F58220] rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#F58220]/20 transition-colors"
+                      >
+                        <option value="Cotação de Carga Lotação">Cotação de Carga Lotação (Exclusiva)</option>
+                        <option value="Cotação de Carga Fracionada">Cotação de Carga Fracionada</option>
+                        <option value="Frete Emergencial / Expresso">Frete Emergencial / Expresso</option>
+                        <option value="Parceria de Transporte Contínuo">Parceria de Transporte Contínuo</option>
+                        <option value="Outro Assunto">Outro Assunto / Dúvidas</option>
+                      </select>
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
-                      Sua Mensagem *
+                      Sua Mensagem / Detalhes da Carga *
                     </label>
                     <textarea
                       required
                       rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Descreva detalhes como origem, destino, tipo de mercadoria ou dúvida..."
-                      className="w-full bg-slate-950 border border-white/15 focus:border-[#F58220] rounded-xl p-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#F58220]/20"
+                      placeholder="Descreva detalhes como cidade de origem, destino, tipo de mercadoria, peso aproximado ou dúvida..."
+                      className="w-full bg-slate-950 border border-white/15 focus:border-[#F58220] rounded-xl p-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#F58220]/20 transition-colors"
                     />
                   </div>
 
@@ -252,9 +331,10 @@ export const ContactSection: React.FC = () => {
                     <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
 
-                  <p className="text-center text-xs text-slate-400 pt-2">
-                    🔒 Seus dados são utilizados exclusivamente para o contato comercial da Solforte.
-                  </p>
+                  <div className="pt-2 flex items-center justify-center gap-2 text-xs text-slate-400">
+                    <ShieldCheck className="w-4 h-4 text-green-400" />
+                    <span>Atendimento com sigilo e segurança da informação.</span>
+                  </div>
                 </form>
               )}
 
@@ -265,9 +345,9 @@ export const ContactSection: React.FC = () => {
 
         {/* Embedded Interactive Map of Jequié */}
         <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-slate-950 relative">
-          <div className="p-4 bg-slate-900 border-b border-white/10 flex items-center justify-between">
+          <div className="p-4 bg-slate-900 border-b border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-[#F58220]" />
+              <MapPin className="w-4 h-4 text-[#F58220] flex-shrink-0" />
               <span className="text-sm font-bold text-white">Localização da Matriz: Avenida Lions Club, 54 - Jequié, BA</span>
             </div>
             <a
@@ -276,7 +356,7 @@ export const ContactSection: React.FC = () => {
               rel="noopener noreferrer"
               className="text-xs text-[#F58220] hover:underline font-semibold"
             >
-              Abrir no Google Maps ↗
+              Abrir rota no Google Maps ↗
             </a>
           </div>
           
@@ -293,4 +373,3 @@ export const ContactSection: React.FC = () => {
     </section>
   );
 };
-
